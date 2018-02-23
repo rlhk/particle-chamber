@@ -1,10 +1,7 @@
 (ns particle-chamber.core
-  (:gen-class))
-
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+  (:gen-class)
+  (:require
+    [clojure.pprint :as pp]))
 
 (def test-cases
   [
@@ -76,6 +73,7 @@
   (for [g result]
      (filter #(not= nil %) g)))
 
+; run a single test case
 (defn run [test-case]
   (let [
         slot-count (count (vec (second test-case)))
@@ -84,7 +82,7 @@
       (->> test-case
            (read-init-state) ; parse test case to data model
            (map #(roll %)) ; simulate all particle activities till falling out chamber
-           (transpose-irregular) ; group history by time
+           (transpose-irregular); group history by time
            (remove-nil-in-row) ; clean up before rendering
            (map #(draw-chamber %))
            (map (fn [state] (map #(if (nil? %) \. %) state))) ; replace nil with "." in data
@@ -92,4 +90,12 @@
       [final-state])))
 
 ; run all test cases
-(map #(run %) test-cases)
+; (map #(run %) test-cases)
+(defn -main [& args]
+  "Run and print all test cases and results"
+  (print
+    (for [test-case test-cases]
+      (str
+        (println test-case)
+        (pp/pprint (run test-case))
+        (print \newline)))))

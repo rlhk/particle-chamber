@@ -1,36 +1,18 @@
 # particle-chamber
 
-FIXME: description
+Sample solution implementation for Hong Kong Clojure Workshop
 
-## Installation
+## Compilation
 
-Download from http://example.com/FIXME.
+    $ lein compile
+
+    $ lein uberjar
 
 ## Usage
 
-FIXME: explanation
-
-    $ java -jar particle-chamber-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+    $ java -jar target/uberjar/particle-chamber-0.1.0-SNAPSHOT-standalone.jar
 
 ## License
 
-Copyright © 2018 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Copyright © 2018 rlhk.open@gmail.com
+Distributed under the Eclipse Public License either version 1.0 or any later version.
